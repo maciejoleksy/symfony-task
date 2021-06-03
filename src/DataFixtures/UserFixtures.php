@@ -14,7 +14,7 @@ class UserFixtures extends Fixture
             $user = new User();
             $user->setUsername('user' . $i);
             $user->setPassword('password' . $i);
-            $user->setDisable(false);
+            $user->setDisabled(false);
             $user->setRoles(['ROLE_USER']);
             $manager->persist($user);
         }

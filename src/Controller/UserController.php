@@ -46,7 +46,7 @@ class UserController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $user->setPassword($this->passwordHasher->hashPassword($user, $user->getPassword()));
-            $user->setDisable(false);
+            $user->setDisabled(false);
             $user->setRoles(['ROLE_USER']);
 
             $entityManager = $this->getDoctrine()->getManager();
@@ -65,7 +65,7 @@ class UserController extends AbstractController
     public function activate(User $user): Response
     {
         $entityManager = $this->getDoctrine()->getManager();
-        $entityManager->persist($user->setDisable(false));
+        $entityManager->persist($user->setDisabled(false));
         $entityManager->flush();
 
         return $this->redirectToRoute('user_index');
@@ -75,7 +75,7 @@ class UserController extends AbstractController
     public function deactivate(User $user): Response
     {
         $entityManager = $this->getDoctrine()->getManager();
-        $entityManager->persist($user->setDisable(true));
+        $entityManager->persist($user->setDisabled(true));
         $entityManager->flush();
 
         return $this->redirectToRoute('user_index');

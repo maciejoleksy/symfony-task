@@ -43,7 +43,7 @@ class AppCustomAuthenticator extends AbstractLoginFormAuthenticator
         $user = $this->entityManager->getRepository(User::class)
             ->findOneBy(['username' => $username]);
 
-        if ($user && $user->isDisable()) {
+        if ($user && $user->isDisabled()) {
             throw new CustomUserMessageAuthenticationException('User is disabled.');
         }
 
