@@ -10,9 +10,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class TreeController extends AbstractController
 {
-    /**
-     * @Route("/tree", methods={"GET","HEAD"})
-     */
+    #[Route('/tree', name: 'tree', methods: ['GET', 'HEAD'])]
     public function tree(): JsonResponse
     {
         $list = json_decode(file_get_contents('..\list.json'), true);
