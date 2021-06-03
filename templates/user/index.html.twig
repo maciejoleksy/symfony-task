@@ -13,22 +13,20 @@
                         {% if app.user != null %}
                             <table class="table">
                                 <tr>
-                                    <th width="50px">Id</th>
                                     <th>Username</th>
                                     <th width="100px">Action</th>
                                 </tr>
                                 {% for user in users %}
                                     <tr>
-                                        <td>{{ user.id }}</td>
                                         <td>{{ user.username }}</td>
                                         <td>
                                             {% if user.disabled %}
-                                                <a class="btn btn-primary"
+                                                <a class="btn btn-secondary"
                                                    href="{{ path('user_activate', {'id': user.id}) }}">
-                                                    enable
+                                                    disabled
                                                 </a>
                                             {% else %}
-                                                <a class="btn btn-secondary"
+                                                <a class="btn btn-primary"
                                                    href="{{ path('user_deactivate', {'id': user.id}) }}">
                                                     disable
                                                 </a>
