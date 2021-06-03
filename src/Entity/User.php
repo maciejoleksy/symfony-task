@@ -5,9 +5,11 @@ namespace App\Entity;
 use App\Repository\UserRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * @ORM\Entity(repositoryClass=UserRepository::class)
+ * @UniqueEntity("username", message="This username is already used.")
  */
 class User implements UserInterface
 {
@@ -112,7 +114,7 @@ class User implements UserInterface
         // $this->plainPassword = null;
     }
 
-    public function getDisable(): ?bool
+    public function isDisable(): ?bool
     {
         return $this->disable;
     }
