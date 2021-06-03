@@ -39,11 +39,7 @@
                                                required/>
                                     </div>
                                 </div>
-                                <input
-                                        type="hidden"
-                                        name="_csrf_token"
-                                        value="{{ csrf_token('authenticate') }}"
-                                />
+                                <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}"/>
                                 <div class="form-group">
                                     <div class="col-md-12">
                                         <button type="submit" class="btn btn-primary">
