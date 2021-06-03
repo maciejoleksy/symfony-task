@@ -22,7 +22,7 @@
                                         <td>{{ user.id }}</td>
                                         <td>{{ user.username }}</td>
                                         <td>
-                                            {% if user.disable %}
+                                            {% if user.disabled %}
                                                 <a class="btn btn-primary"
                                                    href="{{ path('user_activate', {'id': user.id}) }}">
                                                     enable
