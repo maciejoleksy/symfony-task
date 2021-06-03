@@ -1,19 +1,29 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {# Run `composer require symfony/webpack-encore-bundle`
-           and uncomment the following Encore helpers to start using Symfony UX #}
-        {% block stylesheets %}
-            {#{{ encore_entry_link_tags('app') }}#}
-        {% endblock %}
+<head>
+    <meta charset="UTF-8"/>
+    <title>{% block title %}Welcome!{% endblock %}</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"/>
+    {% block stylesheets %}{% endblock %}
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+        <a class="navbar-brand" href="#">symfony-task</a>
+        <a class="btn btn-light" href="{{ path('tree') }}">Tree</a>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent"></div>
+        <ul class="nav navbar-nav navbar-right">
+            {% if app.user %}
+                <li><a class="btn btn-primary" href="{{ path('app_logout') }}">Logout</a></li>
+            {% else %}
+                <li><a class="btn btn-primary" href="{{ path('app_login') }}">Login</a></li>
+                <li class="ml-1"><a class="btn btn-secondary " href="{{ path('user_register') }}">Register</a></li>
+            {% endif %}
+        </ul>
+    </div>
+</nav>
+{% block body %}{% endblock %}
 
-        {% block javascripts %}
-            {#{{ encore_entry_script_tags('app') }}#}
-        {% endblock %}
-    </head>
-    <body>
-        {% block body %}{% endblock %}
-    </body>
+{% block javascripts %}{% endblock %}
+</body>
 </html>
